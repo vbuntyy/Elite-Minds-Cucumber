@@ -1,8 +1,13 @@
-com\training\steps\LoginSteps.class
-com\training\pages\SecureAreaPage.class
-com\training\hooks\Hooks.class
-com\training\pages\LoginPage.class
+com\training\reports\ExtentLogger.class
+com\training\reports\ExtentManager.class
 com\training\runner\RunController.class
 com\training\utils\ConfigReader.class
+com\training\utils\ExcelReader.class
 com\training\factory\DriverFactory.class
 com\training\pages\BasePage.class
+com\training\steps\LoginSteps.class
+com\training\pages\SecureAreaPage.class
+com\training\reports\ExtentTestHolder.class
+com\training\utils\ScreenshotUtil.class
+com\training\hooks\Hooks.class
+com\training\pages\LoginPage.class
