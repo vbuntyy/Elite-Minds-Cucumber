@@ -1,13 +1,22 @@
 package com.training.steps;
 
+import java.time.Duration;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import com.training.factory.DriverFactory;
 import com.training.reports.ExtentLogger;
 import com.training.utils.ExcelReader;
-import io.cucumber.java.en.*;
-import org.openqa.selenium.*;
-import org.testng.Assert;
 
-import java.util.Map;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class LoginSteps {
 
@@ -61,10 +70,15 @@ public class LoginSteps {
 
         String expectedMessage = rowData.get("expectedMessage");
 
-        WebElement flashMessage = driver.findElement(By.id("flash"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement flashMessage = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.id("flash"))
+        );
+
         String actualText = flashMessage.getText();
 
-        ExtentLogger.step("Validating expected message");
+        ExtentLogger.step("Actual message displayed: " + actualText);
 
         Assert.assertTrue(
                 actualText.contains(expectedMessage),
